@@ -2,7 +2,7 @@
 
 # Description 
 
-The University Management System is a comprehensive application built with C# ASP.NET Core Web API for the backend and Angular with Bootstrap for the frontend. The application is localized in Bosnian language. It utilizes a SQL database hosted on a server accessible via the internet. The system is designed to facilitate the management of university operations, catering to the needs of various user groups, including administrative staff, professors, and students.
+The University Management System is a comprehensive application built with C# ASP.NET Core Web API for the backend and Angular with Bootstrap for the frontend. The application is localized in Bosnian language. It utilizes a SQL database hosted on a server accessible via the internet. The system is designed to facilitate the management of university operations, catering to the needs of various user groups, including administrative staff, professors, and students. Additionally, an SMTP service is utilized for sending emails when adding new professors and students. Upon registration, an email containing their username and password is sent to their email address. Similarly, when generating a new password by administrative staff to these users, the new password is sent to their email.
 
 <h5>Key Features</h5>
 
@@ -17,7 +17,9 @@ Real-world Usability: The application is designed to be deployed and used in rea
 Start the Angular project, and navigate to the login page.
 
 Use the following credentials to access the system as an administrative staff member:
+
 Username: admin
+
 Password: admin
 
 <h5>Future Enhancements</h5>
@@ -43,15 +45,19 @@ Installation
 Clone this repository to your local machine using the following command:
 
 git clone https://github.com/hamzabikic/EStudentskaSluzba-App.git
+
 Navigate to the application directory in your terminal:
 
 cd repository-name
+
 Install all the necessary dependencies by running:
 
 npm install
+
 Running Once you have successfully installed all the required dependencies, you can run the application using the following command:
 
 npm start
+
 This command starts a development server. Once the server is up and running, the application will be available at http://localhost:4200/ in your web browser.
 
 # Instructions for Running the Web Api
@@ -76,3 +82,35 @@ Swagger Integration: Swagger has been integrated into the application to provide
 
 # License
 This application is available under the MIT License. See the LICENSE file for more information.
+
+# Screenshots
+
+<img src="/Screenshots/login.JPG">
+
+<h5>Administrative staff </h5>
+
+<img src="/Screenshots/studenti.JPG">
+<img src="/Screenshots/dodavanje-studenta.JPG">
+<img src="/Screenshots/opstine.JPG">
+<img src="/Screenshots/editovanje-studenta-by-referent.JPG">
+<img src="/Screenshots/profesori.JPG">
+<img src="/Screenshots/upisi.JPG">
+<img src="/Screenshots/rate.JPG">
+<img src="/Screenshots/ocjene.JPG">
+<img src="/Screenshots/uredjivanje-profila.JPG">
+
+<h5>Professors</h5>
+
+<img src="/Screenshots/profesor-ocjene.JPG">
+<p>Here you can see the restriction that the professor can only add, edit and delete grades from his subjects.</p>
+
+<h5>Students</h5>
+
+<img src="/Screenshots/student-edit-profila.JPG">
+<img src="/Screenshots/student-ocjene.JPG">
+<p>Here you can see the restriction that the student can only review his grades and change the password for his account. All other permissions are given to administrative staff.</p>
+
+
+
+
+
