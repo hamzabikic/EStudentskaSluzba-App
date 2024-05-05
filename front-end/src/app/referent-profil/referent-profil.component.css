@@ -1,0 +1,27 @@
+#slika-img {
+  width:200px;
+  height:200px;
+  display:block;
+  border:2px solid rgb(0,174,239);
+}
+#slika-div {
+  width:220px;
+  margin-top:20px;
+  float:left;
+}
+#slika-file {
+  margin-top:5px;
+}
+#podaci {
+  float:left;
+  width:400px;
+  margin-right:20px;
+}
+#dugme, #dugme2 {
+  margin-top:10px;
+}
+#sifra-div {
+  width:300px;
+  float:left;
+}
+

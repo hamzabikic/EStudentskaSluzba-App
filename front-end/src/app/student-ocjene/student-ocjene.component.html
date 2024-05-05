@@ -1,0 +1,115 @@
+<div id="podaci">
+  <h4>Podaci o studentu</h4>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Id studenta</label>
+    <input [(ngModel)]="studentId" disabled type="text" class="form-control" id="exampleInputEmail1"  >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ime studenta</label>
+    <input disabled [(ngModel)]="student.ime" type="text" class="form-control" id="exampleInputPassword1" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Prezime studenta</label>
+    <input disabled [(ngModel)]="student.prezime" type="text" class="form-control" id="exampleInputPassword2" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword3">Ukupni prosjek</label>
+    <input disabled [(ngModel)]="prosjek" type="text" class="form-control" id="exampleInputPassword3" >
+  </div>
+</div>
+<button *ngIf="!auth.isStudent()" id="nova" (click)="dialog_noviPredmet=!dialog_noviPredmet;
+this.predmetId=0; this.poeni='';this.vrijednost =''; this.upisnaOcjena=''; this.naslovDialog
+='Nova ocjena'; this.ocjenaId=0;datumPolaganja='';" type="button" class="btn btn-primary">Nova ocjena</button>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Predmet</th>
+    <th scope="col">Ocjena</th>
+    <th scope="col">Opis</th>
+    <th scope="col">Bodovi</th>
+    <th scope="col">Datum polaganja</th>
+    <th scope="col">Semestar</th>
+    <th scope="col">Profesor</th>
+    <th *ngIf="!auth.isStudent()" scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of ocjene" class="table-active">
+    <td class ="table-info" scope="row">
+         {{s.predmet.naziv}}
+    </td>
+    <td class ="table-info" scope="row">
+         {{s.vrijednost}}
+    </td>
+    <td class ="table-info" scope="row">
+           {{s.opisnaOcjena}}
+    </td>
+    <td class ="table-info" scope="row">
+          {{s.poeni}}
+    </td>
+    <td class ="table-info" scope="row">
+          {{s.datumPolaganja}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.predmet.semestar}}
+    </td>
+    <td class ="table-info" scope="row">
+          {{s.predmet.nastavnik.ime}} {{s.predmet.nastavnik.prezime}}
+    </td>
+    <td *ngIf="!auth.isStudent()" class ="table-info" scope="row">
+      <button *ngIf="s.predmet.nastavnik.id == auth.getId() || auth.isReferent()"
+              (click)="this.dialog_noviPredmet = true;
+this.vrijednost= s.vrijednost; this.predmetId= s.predmetId; this.upisnaOcjena=s.opisnaOcjena;
+this.datumPolaganja = s.datumPolaganja.split('T')[0]; this.poeni = s.poeni; this.naslovDialog='Edit ocjena';
+this.ocjenaId= s.id;"
+              type="button" class="btn btn-secondary">Uredi</button>
+      <button *ngIf="s.predmet.nastavnik.id == auth.getId() || auth.isReferent()"
+              (click)="obrisiOcjenu(s.id)" style="margin-left:10px;" type="button" class="btn btn-danger"
+      >Obrisi</button>
+    </td>
+  </tbody>
+</table>
+<div *ngIf="dialog_noviPredmet" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ naslovDialog }}</h5>
+        <button (click)="dialog_noviPredmet=!dialog_noviPredmet;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label >Predmet</label>
+            <select [disabled]="ocjenaId!=0" [(ngModel)]="predmetId" class="form-control" >
+              <option *ngFor="let p of predmeti" value="{{p.id}}">{{p.naziv}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ocjena</label>
+            <input [(ngModel)]="vrijednost"
+                   type="number" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Opisna ocjena</label>
+            <input [(ngModel)]="upisnaOcjena" type="text" class="form-control" placeholder="sest">
+          </div>
+          <div class="form-group">
+            <label >Bodovi</label>
+            <input [(ngModel)]="poeni" type="number" class="form-control" >
+          </div>
+          <div class="form-group">
+            <label>Datum polaganja</label>
+            <input [(ngModel)]="datumPolaganja" type="date" class="form-control">
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="dialog_noviPredmet=!dialog_noviPredmet" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="posaljiOcjenu()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

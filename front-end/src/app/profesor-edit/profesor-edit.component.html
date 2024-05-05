@@ -1,0 +1,56 @@
+<div id="slika-edit">
+  <div id="profilna-div">
+    <img src="{{putanja}}" id="profilna">
+  </div>
+  <div style="width:50%; float:right;" class="form-group">
+    <label>Učitaj sliku</label>
+    <input id="slika-file" (change)="ucitajSliku()" style="width:80%"  type="file" class="form-control"
+           accept="image/jpeg">
+  </div>
+  <button [disabled]="!moguce_slanje" (click)="novaLozinka()" style="margin-top:50px;" class="btn btn-danger">Generisi novu lozinku</button>
+</div>
+<div id="forme">
+  <div id="forma-lijevo">
+    <div class="form-group">
+      <label>Ime</label>
+      <input
+             [(ngModel)] ="profesor.ime" type="text" class="form-control"  placeholder="Ime">
+    </div>
+    <div class="form-group">
+      <label>Prezime</label>
+      <input
+             [(ngModel)] ="profesor.prezime" type="text" class="form-control" placeholder="Prezime">
+    </div>
+    <div class="form-group">
+      <label>Datum rodjenja</label>
+      <input [(ngModel)] ="datumRodjenja" type="date" class="form-control">
+    </div>
+    <div class="form-group">
+      <label >Opstina rodjenja</label>
+      <select [(ngModel)]="profesor.opstinaId" class="form-control" >
+        <option *ngFor="let o of opstine" value="{{o.id}}">{{o.naziv}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label >Email</label>
+      <input [(ngModel)]="profesor.email" type="email" class="form-control" placeholder="name@example.com">
+    </div>
+  </div>
+  <div id="forma-desno">
+    <div class="form-group">
+      <label >Korisnicko ime</label>
+      <input disabled [(ngModel)]="profesor.korisnickoIme" type="text" class="form-control" placeholder="ime.prezime">
+    </div>
+    <div class="form-group">
+      <label >Datum zaposlenja</label>
+      <input [(ngModel)]="datumZaposlenja" type="date" class="form-control" >
+    </div>
+    <div class="form-group">
+      <label >Zvanje</label>
+      <input [(ngModel)]="profesor.zvanje" type="text" class="form-control" placeholder="dr.sci">
+    </div>
+    <div class="form-group">
+      <button (click)="sacuvajProfesora()" style="position:relative; top:20px;"class="btn btn-primary">Save changes</button>
+    </div>
+  </div>
+</div>

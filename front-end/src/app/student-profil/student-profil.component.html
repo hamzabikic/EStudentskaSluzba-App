@@ -1,0 +1,44 @@
+<div id="slika-div">
+  <img id="slika-img" src="{{slika}}">
+  <input (change)="ucitajSliku()" id="slika-file" type="file" accept="/image/jpeg">
+</div>
+<div id="podaci">
+  <h5>Podaci</h5>
+  <div class="form-group">
+    <label for="ime">Ime</label>
+    <input disabled [(ngModel)]="referent.ime" type="text" class="form-control" id="ime">
+  </div>
+  <div class="form-group">
+    <label for="prezime">Prezime</label>
+    <input disabled [(ngModel)]="referent.prezime" type="text" class="form-control" id="prezime" >
+  </div>
+  <div class="form-group">
+    <label for="datumrodjenja">Datum rodjenja</label>
+    <input disabled [(ngModel)]="datumRodjenja" type="date" class="form-control" id="datumrodjenja">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input disabled [(ngModel)]="referent.email" type="email" class="form-control" id="email">
+  </div>
+  <div class="form-group">
+    <label for="inputState">Opstina rodjenja</label>
+    <select disabled [(ngModel)] ="referent.opstinaId" id="inputState" class="form-control">
+      <option *ngFor="let o of opstine" value="{{o.id}}">{{o.naziv}}</option>
+    </select>
+  </div>
+  <button (click)="editujReferenta()" id="dugme" type="submit" class="btn btn-primary">Sacuvaj sliku</button>
+</div>
+<div id="sifra-div">
+  <h5>Izmjena lozinke</h5>
+  <div class="form-group">
+    <label for="password1">Stara lozinka</label>
+    <input [(ngModel)]="staraLozinka" type="password" class="form-control" id="password1" >
+  </div>
+  <div class="form-group">
+    <label for="password2">Nova lozinka</label>
+    <input [(ngModel)]="novaLozinka" type="password" class="form-control" id="password2" >
+  </div>
+  <button (click)="promjenaLozinke()" id="dugme2" type="submit" class="btn btn-primary">Promijeni lozinku</button>
+</div>
+
+

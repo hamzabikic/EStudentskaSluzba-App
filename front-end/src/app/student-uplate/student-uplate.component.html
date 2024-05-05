@@ -1,0 +1,108 @@
+<div id="podaci">
+  <h4>Podaci o studentu</h4>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Id studenta</label>
+    <input [(ngModel)]="studentId" disabled type="text" class="form-control" id="exampleInputEmail1"  >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ime studenta</label>
+    <input disabled [(ngModel)]="student.ime" type="text" class="form-control" id="exampleInputPassword1" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Prezime studenta</label>
+    <input disabled [(ngModel)]="student.prezime" type="text" class="form-control" id="exampleInputPassword2" >
+  </div>
+</div>
+<button (click)="noviUpis=!noviUpis; setujDatum(); obnova=false; upisanaGodina='';" id="nova" type="button" class="btn btn-primary">Novi upis</button>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Datum upisa</th>
+    <th scope="col">Godina</th>
+    <th scope="col">Obnova</th>
+    <th scope="col">Datum ovjere</th>
+    <th scope="col">Zabiljezio</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let x of lista">
+    <td class ="table-info" scope="row">
+      {{x.datumUpisa}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.upisanaGodina}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.obnova}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.datumOvjere}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.referent.ime}} {{x.referent.prezime}}
+    </td>
+    <td class ="table-info" scope="row">
+      <button *ngIf="x.datumOvjere ==null" (click)="novaOvjera=!novaOvjera; setujDatum();upisId = x.id;"class="btn btn-primary">Ovjera</button>
+      <button (click)="obrisiUpis(x.id)" style="margin-left:10px;" type="button" class="btn btn-danger"
+      >Obrisi</button>
+    </td>
+  </tbody>
+</table>
+<div *ngIf="noviUpis" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novi upis</h5>
+        <button  (click)="noviUpis=!noviUpis" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Datum upisa</label>
+            <input [(ngModel)]="datumUpisa"
+                   type="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Upisana godina</label>
+            <input [(ngModel)]="upisanaGodina" type="number" class="form-control" placeholder="1">
+          </div>
+          <div class="form-check">
+            <input [(ngModel)]="obnova" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Obnova
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="noviUpis=!noviUpis" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="posaljiUpis()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="novaOvjera" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novi upis</h5>
+        <button  (click)="novaOvjera =!novaOvjera" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Datum upisa</label>
+            <input [(ngModel)]="datumOvjere"
+                   type="date" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="novaOvjera=!novaOvjera" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="ovjeri()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+

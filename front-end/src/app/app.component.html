@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a routerLink="" class="navbar-brand" ><img src="/assets/fit.png"></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul *ngIf="myAuth.jeLogiran()" class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li *ngIf="myAuth.isReferent()" class="nav-item">
+          <a routerLink="/studenti" class="nav-link active" aria-current="page" >Studenti</a>
+        </li>
+        <li *ngIf="myAuth.isReferent()" class="nav-item">
+          <a routerLink="/profesori" class="nav-link active" aria-current="page" >Profesori</a>
+        </li>
+        <li  *ngIf="myAuth.isReferent() || myAuth.isNastavnik()" class="nav-item">
+          <a routerLink="/ocjene" class="nav-link active" aria-current="page" >Ocjene</a>
+        </li>
+        <li *ngIf="myAuth.isStudent()" class="nav-item">
+          <a routerLink="/student/ocjene/{{myAuth.getId()}}" class="nav-link active" aria-current="page" >Ocjene</a>
+        </li>
+        <li *ngIf="myAuth.isReferent()" class="nav-item">
+        <a routerLink="/uplate" class="nav-link active" aria-current="page" >Uplate</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" (click)="otvorenProfil=!otvorenProfil">
+            {{myAuth.getImePrezime()}}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="otvorenProfil">
+            <li><a routerLink="" class="dropdown-item" >Uredi profil</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a (click)="odjava()" class="dropdown-item" >Odjava</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

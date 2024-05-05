@@ -1,0 +1,96 @@
+<div id="podaci">
+  <h4>Podaci o studentu</h4>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Id studenta</label>
+    <input [(ngModel)]="studentId" disabled type="text" class="form-control" id="exampleInputEmail1"  >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Ime studenta</label>
+    <input disabled [(ngModel)]="student.ime" type="text" class="form-control" id="exampleInputPassword1" >
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword2">Prezime studenta</label>
+    <input disabled [(ngModel)]="student.prezime" type="text" class="form-control" id="exampleInputPassword2" >
+  </div>
+</div>
+<button (click)="novaRata=!novaRata; setujDatum(); godina='';iznos='';redniBroj='';obnova=false;
+" id="nova" type="button" class="btn btn-primary">Nova uplata</button>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Godina studija</th>
+    <th scope="col">Rata</th>
+    <th scope="col">Datum uplate</th>
+    <th scope="col">Iznos</th>
+    <th scope="col">Obnova</th>
+    <th scope="col">Zabiljezio</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let x of lista">
+    <td class ="table-info" scope="row">
+      {{x.godina}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.redniBroj}}
+    </td>
+    <td class ="table-info" scope="row">
+       {{x.datum}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.iznos}} KM
+    </td>
+    <td class ="table-info" scope="row">
+       {{x.obnova}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{x.referent.ime}} {{x.referent.prezime}}
+    </td>
+    <td class ="table-info" scope="row">
+      <button (click)="obrisiUplatu(x.id)" style="margin-left:10px;" type="button" class="btn btn-danger"
+      >Obrisi</button>
+    </td>
+  </tbody>
+</table>
+<div *ngIf="novaRata" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nova uplata</h5>
+        <button (click)="novaRata=!novaRata" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Datum uplate</label>
+            <input [(ngModel)]="datum"
+                   type="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label>Redni broj rate</label>
+            <input [(ngModel)]="redniBroj" type="number" class="form-control" placeholder="1">
+          </div>
+          <div class="form-group">
+            <label>Godina studija</label>
+            <input [(ngModel)]="godina" type="number" class="form-control" placeholder="1">
+          </div>
+          <div class="form-group">
+            <label>Iznos</label>
+            <input [(ngModel)]="iznos" type="number" class="form-control" placeholder="900">
+          </div>
+          <div class="form-check">
+            <input  [(ngModel)]="obnova" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Obnova
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="novaRata=!novaRata" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="posaljiUplatu()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

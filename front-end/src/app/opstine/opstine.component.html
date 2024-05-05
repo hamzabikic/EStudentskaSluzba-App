@@ -1,0 +1,61 @@
+<div id="elementi">
+  <div id="pretraga" class="input-group rounded">
+    <label style="position:relative; top:10px;margin-right: 10px;" ><h6>Pretraga:</h6></label>
+    <input [(ngModel)]="naziv" (input)="pretraga()" type="search" class="form-control rounded" placeholder="programiranje" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+  </div>
+  <button (click)="dialog_nova_opstina=!dialog_nova_opstina" id="novi" type="button" class="btn btn-primary">Nova opstina</button>
+  <button routerLink="/drzave" id="drzave" type="button" class="btn btn-primary">Drzave</button>
+</div>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Naziv</th>
+    <th scope="col">Drzava</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of opstine_copy" class="table-active">
+    <th class ="table-info" scope="row">{{ s.naziv }}</th>
+    <td class ="table-info" scope="row">
+      {{s.drzava.naziv}}
+    </td>
+    <td class ="table-info" scope="row">
+      <button (click)="obrisiOpstinu(s.id)" type="button" class="btn btn-danger">Obrisi</button>
+    </td>
+
+  </tbody>
+</table>
+
+<div *ngIf="dialog_nova_opstina" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Nova opstina</h5>
+        <button (click)="dialog_nova_opstina = !dialog_nova_opstina; obrisiPodatke();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Naziv</label>
+            <input
+              [(ngModel)] ="ime" type="text" class="form-control"  placeholder="Novo Sarajevo">
+          </div>
+          <div class="form-group">
+            <label >Drzava</label>
+            <select [(ngModel)]="drzavaId" class="form-control" >
+              <option *ngFor="let o of drzave" value="{{o.id}}">{{o.naziv}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="dialog_nova_opstina =!dialog_nova_opstina; obrisiPodatke();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="dodajOpstinu()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

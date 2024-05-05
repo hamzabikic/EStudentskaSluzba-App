@@ -1,0 +1,31 @@
+#forma-lijevo{
+  width:40%;
+  margin-right:5%;
+  margin-left:5%;
+}
+#forma-desno{
+  width:40%;
+  margin-left:5%;
+  margin-right:5%;
+}
+#forme {
+  display:flex;
+}
+#slika-edit {
+  width:90%;
+  margin:auto;
+  height:220px;
+}
+#profilna {
+  width:200px;
+  height:200px;
+  display:block;
+  margin:auto;
+}
+#profilna-div{
+  width:50%;
+  float:left;
+}
+#novi {
+  height:80px;
+}

@@ -1,0 +1,42 @@
+<button id="novi" class="btn btn-primary" (click)="dialog_novi_smjer =!dialog_novi_smjer; naziv='';">Novi smjer</button>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Naziv</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of smjerovi" class="table-active">
+    <th class ="table-info" scope="row">{{ s.opis }}</th>
+    <td class ="table-info" scope="row">
+      <button (click)="obrisiSmjer(s.id)" type="button" class="btn btn-danger">Obrisi</button>
+    </td>
+
+  </tbody>
+</table>
+<div *ngIf="dialog_novi_smjer" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novi smjer</h5>
+        <button (click)="dialog_novi_smjer = !dialog_novi_smjer;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Naziv</label>
+            <input
+              [(ngModel)] ="naziv" type="text" class="form-control"  placeholder="Naziv smjera">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="dialog_novi_smjer = !dialog_novi_smjer;" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button (click)="dodajSmjer()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

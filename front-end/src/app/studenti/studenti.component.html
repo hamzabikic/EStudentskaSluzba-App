@@ -1,0 +1,116 @@
+<div id="elementi">
+<div id="pretraga" class="input-group rounded">
+  <label style="position:relative; top:10px;margin-right: 10px;" ><h6>Pretraga:</h6></label>
+  <input [(ngModel)]="imeprezime" (input)="pretraga()" type="search" class="form-control rounded" placeholder="Ime i prezime" aria-label="Search" aria-describedby="search-addon" />
+  <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+</div>
+  <button (click)="dialog_novi_student=!dialog_novi_student" id="novi" type="button" class="btn btn-primary">Novi student</button>
+  <button routerLink="/opstine" id="nova" type="button" class="btn btn-primary">Opstine</button>
+  <button routerLink="/smjerovi" id="nova2" type="button" class="btn btn-primary">Smjerovi</button>
+</div>
+
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Broj indeksa</th>
+    <th scope="col">Ime</th>
+    <th scope="col">Prezime</th>
+    <th scope="col">Datum rodjenja</th>
+    <th scope="col">Smjer</th>
+    <th scope="col">Godina studija</th>
+    <th scope="col">Opstina</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of studenti_copy" class="table-active">
+    <th class ="table-info" scope="row">{{ s.brojIndeksa }}</th>
+    <td class ="table-info" scope="row">
+      {{s.ime}}
+  </td>
+    <td class ="table-info" scope="row">
+      {{s.prezime}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.datumRodjenja}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.smjer.opis}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.godinaStudija}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.opstina.naziv}}
+    </td>
+    <td class ="table-info" scope="row">
+      <button routerLink="/studenti/detalji/{{s.id}}" type="button" class="btn btn-light">Detalji</button>
+      <button routerLink="/studenti/edit/{{s.id}}" type="button" class="btn btn-secondary">Uredi</button>
+      <button (click)="obrisiStudenta(s.id)" type="button" class="btn btn-danger">Obrisi</button>
+    </td>
+  </tbody>
+</table>
+<div *ngIf="dialog_novi_student" class="modal" tabindex="-1" style="display:block !important;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Novi student</h5>
+        <button (click)="dialog_novi_student = !dialog_novi_student; obrisiPodatke();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <div class="form-group">
+            <label>Ime</label>
+            <input (input)="korisnickoIme = ime.toLowerCase()+'.'+prezime.toLowerCase();
+             email=korisnickoIme+'@edu.fit.ba';"
+                   [(ngModel)] ="ime" type="text" class="form-control"  placeholder="Ime">
+          </div>
+          <div class="form-group">
+            <label>Prezime</label>
+            <input (input)="korisnickoIme = ime.toLowerCase()+'.'+prezime.toLowerCase();
+             email=korisnickoIme+'@edu.fit.ba';"
+                   [(ngModel)] ="prezime" type="text" class="form-control" placeholder="Prezime">
+          </div>
+          <div class="form-group">
+            <label>Datum rodjenja</label>
+            <input [(ngModel)] ="datumRodjenja" type="date" class="form-control">
+          </div>
+          <div class="form-group">
+            <label >Opstina rodjenja</label>
+            <select [(ngModel)]="opstinaId" class="form-control" >
+              <option *ngFor="let o of opstine" value="{{o.id}}">{{o.naziv}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >Email</label>
+            <input [(ngModel)]="email" type="email" class="form-control" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label >Korisnicko ime</label>
+            <input [(ngModel)]="korisnickoIme" type="text" class="form-control" disabled placeholder="ime.prezime">
+          </div>
+          <div class="form-group">
+            <label >Broj indeksa</label>
+            <input [(ngModel)]="brojIndeksa" type="text" class="form-control" placeholder="IB200000">
+          </div>
+          <div class="form-group">
+            <label >Smjer</label>
+            <select [(ngModel)]="smjerId" class="form-control" >
+              <option *ngFor="let s of smjerovi" value="{{s.id}}">{{s.opis}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label >Godina studija</label>
+            <input [(ngModel)]="godinaStudija" type="number" class="form-control" placeholder="1">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button (click)="dialog_novi_student =!dialog_novi_student; obrisiPodatke();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button [disabled] ="!moguce_slanje" (click)="dodajStudenta()" type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

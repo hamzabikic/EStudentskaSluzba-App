@@ -1,0 +1,49 @@
+<div id="elementi">
+  <div id="pretraga" class="input-group rounded">
+    <label style="position:relative; top:10px;margin-right: 10px;" ><h6>Pretraga:</h6></label>
+    <input [(ngModel)]="imeprezime" (input)="pretraga()" type="search" class="form-control rounded" placeholder="Ime i prezime" aria-label="Search" aria-describedby="search-addon" />
+    <span class="input-group-text border-0" id="search-addon">
+    <i class="fas fa-search"></i>
+  </span>
+  </div>
+  <button *ngIf="auth.isReferent()" routerLink="/predmeti" id="nova" type="button" class="btn btn-primary">Predmeti</button>
+</div>
+<table class="table table-striped">
+  <thead style="border-bottom:1px solid rgba(169,169,169,0.5); border-top:1px solid rgba(169,169,169,0.5)">
+  <tr>
+    <th scope="col">Broj indeksa</th>
+    <th scope="col">Ime</th>
+    <th scope="col">Prezime</th>
+    <th scope="col">Datum rodjenja</th>
+    <th scope="col">Smjer</th>
+    <th scope="col">Godina studija</th>
+    <th scope="col">Opstina</th>
+    <th scope="col">Akcija</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let s of studenti_copy" class="table-active">
+    <th class ="table-info" scope="row">{{ s.brojIndeksa }}</th>
+    <td class ="table-info" scope="row">
+      {{s.ime}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.prezime}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.datumRodjenja}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.smjer.opis}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.godinaStudija}}
+    </td>
+    <td class ="table-info" scope="row">
+      {{s.opstina.naziv}}
+    </td>
+    <td class ="table-info" scope="row">
+      <button routerLink="/student/ocjene/{{s.id}}" type="button" class="btn btn-light">Ocjene</button>
+    </td>
+  </tbody>
+</table>

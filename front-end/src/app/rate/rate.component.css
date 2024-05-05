@@ -1,0 +1,15 @@
+#podaci {
+  width:40%;
+  margin-bottom:15px;
+  float:left;
+}
+#nova {
+  float:right;
+  display:block;
+  position:relative;
+  top:190px;
+  right:30px;
+}
+td, th {
+  text-align: center;
+}
