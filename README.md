@@ -22,6 +22,17 @@ Username: admin
 
 Password: admin
 
+Student:
+
+Username: test.student
+
+Password: testtest
+
+Profesor:
+
+Username: test.profesor
+Password: testtest
+
 <h5>Future Enhancements</h5>
 The University Management System is continually evolving. Future enhancements may include:
 
