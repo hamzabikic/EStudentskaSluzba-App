@@ -87,7 +87,7 @@ This application is available under the MIT License. See the LICENSE file for mo
 
 <img src="/Screenshots/login.JPG">
 
-<h5>Administrative staff </h5>
+<h1>Administrative staff </h1>
 
 <img src="/Screenshots/studenti.JPG">
 <img src="/Screenshots/dodavanje-studenta.JPG">
@@ -99,12 +99,12 @@ This application is available under the MIT License. See the LICENSE file for mo
 <img src="/Screenshots/ocjene.JPG">
 <img src="/Screenshots/uredjivanje-profila.JPG">
 
-<h5>Professors</h5>
+<h1>Professors</h1>
 
 <img src="/Screenshots/profesor-ocjene.JPG">
 <p>Here you can see the restriction that the professor can only add, edit and delete grades from his subjects.</p>
 
-<h5>Students</h5>
+<h1>Students</h1>
 
 <img src="/Screenshots/student-edit-profila.JPG">
 <img src="/Screenshots/student-ocjene.JPG">
