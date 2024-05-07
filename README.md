@@ -92,9 +92,6 @@ Testing API Endpoints: Utilize a tool like Postman or Swagger UI to test the API
 
 Swagger Integration: Swagger has been integrated into the application to provide interactive API documentation. Once the application is running, navigate to the Swagger endpoint (e.g., http://localhost:5000/swagger) to access the Swagger UI and explore the API endpoints.
 
-# License
-This application is available under the MIT License. See the LICENSE file for more information.
-
 # Screenshots
 
 <img src="/Screenshots/login.JPG">
@@ -121,6 +118,9 @@ This application is available under the MIT License. See the LICENSE file for mo
 <img src="/Screenshots/student-edit-profila.JPG">
 <img src="/Screenshots/student-ocjene.JPG">
 <p>Here you can see the restriction that the student can only review his grades and change the password for his account. All other permissions are given to administrative staff.</p>
+
+# License
+This application is available under the MIT License. See the LICENSE file for more information.
 
 
 
