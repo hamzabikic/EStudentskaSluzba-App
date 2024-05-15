@@ -39,17 +39,6 @@ namespace EStudentskaSluzba.Controllers
             {
                 return new AddUpisResponse { Upisan = false, Greska = "Nemate pravo pristupa!" };
             }
-            var student = await db.Studenti.FindAsync(upis.StudentId);
-            if (student == null) return new AddUpisResponse
-            { Upisan = false, Greska = "Student ne postoji u sistemu!" };
-            if(student.GodinaStudija > upis.UpisanaGodina)
-            {
-                return new AddUpisResponse
-                {
-                    Upisan = false,
-                    Greska = "Unesena godina studija je manja od trenutne!"
-                };
-            }
             if (upis.Obnova == false)
             {
                 if (await db.Upisi.Where
@@ -67,8 +56,6 @@ namespace EStudentskaSluzba.Controllers
                 Obnova = upis.Obnova
             };
             db.Upisi.Add(novi);
-            db.SaveChanges();
-            student.GodinaStudija = upis.UpisanaGodina;
             db.SaveChanges();
             return new AddUpisResponse { Upisan = true, Greska = "" };
         }

@@ -27,10 +27,17 @@ namespace EStudentskaSluzba.Controllers
             return await db.Rate.Include(r=> r.Referent).Where(r=> r.StudentId == studentId).ToListAsync();
         }
         [HttpPost]
-        public async Task<bool> addRata([FromBody] RataRequest rata)
+        public async Task<RataResponse> addRata([FromBody] RataRequest rata)
         {
             var prijava = await auth.getInfo();
-            if (!prijava.Prijava.Korisnik.IsReferent) throw new Exception("Nemate pravo pristupa!");
+            if (!prijava.Prijava.Korisnik.IsReferent)
+                return new RataResponse { Dodan = false, Greska = "Nemate pravo pristupa!" };
+            var student = await db.Studenti.FindAsync(rata.StudentId);
+            if (student.GodinaStudija != rata.Godina) return new RataResponse
+            {
+                Dodan = false,
+                Greska = "Student ne pohadja godinu koju se unijeli!"
+            };
             var nova = new Rata
             {
                 Godina = rata.Godina,
@@ -43,7 +50,11 @@ namespace EStudentskaSluzba.Controllers
             };
             db.Rate.Add(nova);
             db.SaveChanges();
-            return true;
+            return new RataResponse
+            {
+                Dodan = true,
+                Greska = ""
+            };
         }
         [HttpDelete]
         public async Task<bool> deleteRata (int rataId)
@@ -68,5 +79,9 @@ namespace EStudentskaSluzba.Controllers
         public int ReferentId { get; set; }
         public float Iznos { get; set; }
     }
-
+    public class RataResponse
+    {
+        public bool Dodan { get; set; }
+        public string Greska { get; set; }
+    }
 }

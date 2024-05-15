@@ -33,7 +33,7 @@ namespace EStudentskaSluzba.Controllers
                 Prezime = "Admin",
                 DatumRodjenja = DateTime.Now,
                 DatumDodavanja = DateTime.Now,
-                Email = "adszarada55@gmail.com",
+                Email = "",
                 KorisnickoIme = "admin",
                 Lozinka = "admin",
                 Slika = "empty",
@@ -42,6 +42,49 @@ namespace EStudentskaSluzba.Controllers
                 Obrisan = false
             };
             db.Korisnici.Add(korisnik);
+            db.SaveChanges();
+            var smjer = new Smjer
+            {
+                Opis = "Razvoj softvera"
+            };
+            db.Smjerovi.Add(smjer);
+            db.SaveChanges();
+            var student = new Student
+            {
+              Ime="Test",
+              Prezime="Student",
+              Email="",
+              KorisnickoIme="test.student",
+              DatumDodavanja=DateTime.Now,
+              DatumRodjenja=DateTime.Now,
+              BrojIndeksa="IB300000",
+              SmjerId = smjer.Id,
+              GodinaStudija=1,
+              Slika="empty",
+              IsReferent=false,
+              Lozinka="test",
+              Obrisan=false,
+              OpstinaId=opstina4.Id
+            };
+            db.Studenti.Add(student);
+            db.SaveChanges();
+            var profesor = new Nastavnik
+            {
+                Ime = "Test",
+                Prezime = "Profesor",
+                Slika = "empty",
+                DatumDodavanja = DateTime.Now,
+                DatumRodjenja = DateTime.Now,
+                DatumZaposlenja = DateTime.Now,
+                Email = "",
+                IsReferent = false,
+                KorisnickoIme = "test.profesor",
+                Lozinka = "test",
+                Obrisan = false,
+                OpstinaId = opstina4.Id,
+                Zvanje = "prof.dr."
+            };
+            db.Nastavnici.Add(profesor);
             db.SaveChanges();
         }
     }

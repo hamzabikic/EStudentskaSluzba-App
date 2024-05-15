@@ -20,7 +20,15 @@ namespace EStudentskaSluzba.Controllers
         public async Task<FileContentResult> getImageById([FromQuery] int id)
         {
             var student = await db.Korisnici.FindAsync(id);
-            if (student == null) return null;
+            byte[] emptyImage = new byte[0];
+            if (student == null)
+            {
+                return File(emptyImage, "image/jpeg", "empty.jpg");
+            }
+            if(student.Slika =="empty")
+            {
+                return File(emptyImage, "image/jpeg", "empty.jpg");
+            }
             byte[] slika;
             try
             {
@@ -28,7 +36,7 @@ namespace EStudentskaSluzba.Controllers
             }
             catch(Exception ex)
             {
-                return null;
+                return File(emptyImage, "image/jpeg", "empty.jpg");
             }
             return File(slika, "image/jpeg", "slika.jpg");
 

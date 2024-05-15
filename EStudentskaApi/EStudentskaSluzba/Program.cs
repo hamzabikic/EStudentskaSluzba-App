@@ -10,7 +10,7 @@ var config = new ConfigurationBuilder()
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(config.GetConnectionString("db2")));
+builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(config.GetConnectionString("db1")));
 builder.Services.AddControllers();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddTransient<AuthService>();
