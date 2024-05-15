@@ -51,13 +51,15 @@ export class RateComponent implements OnInit {
       iznos:this.iznos
     };
     let res = await this.http.post(MojConfig.adresa_servera+"/Uplate/addRata",obj).toPromise();
-    if(res == true) {
+    // @ts-ignore
+    if(res.dodan == true) {
       alert("Uspjesno slanje uplate!");
       await this.ucitajUplate();
       this.novaRata =!this.novaRata;
       return;
     }
-    alert("Neuspjesno slanje!");
+    // @ts-ignore
+    alert(res.greska);
   }
   async obrisiUplatu(id:number) {
     let res =await this.http.delete(MojConfig.adresa_servera +"/Uplate/deleteRata?rataId="+id).toPromise();
