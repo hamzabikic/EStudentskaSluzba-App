@@ -26,13 +26,13 @@ Student:
 
 Username: test.student
 
-Password: testtest
+Password: test
 
 Profesor:
 
 Username: test.profesor
 
-Password: testtest
+Password: test
 
 <h5>Future Enhancements</h5>
 The University Management System is continually evolving. Future enhancements may include:
@@ -80,11 +80,19 @@ Clone the Repository: Clone the repository to your local machine using the provi
 
 Configuration: Configure your application settings in the appsettings.json file, including settings for the database, access keys, and other configuration parameters.
 
+Database Setup: Before starting the web API, ensure that the SQL Server is installed and running on your local machine. Then, follow these steps:
+
+- Open the NuGet Package Console in Visual Studio.
+- Run the following command to add a migration (replace "name-of-migration" with a suitable migration name): add-migration name-of-migration
+- After adding the migration, run the following command to update the database with the changes: update-database
+
 Build the Application: Open a terminal or command prompt in the application directory and execute the following command to build the application:
 dotnet build
 
 Run the Application: After a successful build, run the application from the terminal or command prompt with the following command:
 dotnet run
+
+After starting the web API, the you need to manually call the "TestniPodaci/GenerisiTestnePodatke" endpoint. This step is necessary to initialize the database by creating basic objects needed for testing or demonstration purposes. Once the test data is generated, the application will be ready for use.
 
 The application will start on a local server and will be accessible at http://localhost:44351 (check which port it is listening on in your application)
 
