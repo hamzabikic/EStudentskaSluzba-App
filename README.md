@@ -98,7 +98,7 @@ The application will start on a local server and will be accessible at http://lo
 
 Testing API Endpoints: Utilize a tool like Postman or Swagger UI to test the API endpoints.
 
-Swagger Integration: Swagger has been integrated into the application to provide interactive API documentation. Once the application is running, navigate to the Swagger endpoint (e.g., http://localhost:5000/swagger) to access the Swagger UI and explore the API endpoints.
+Swagger Integration: Swagger has been integrated into the application to provide interactive API documentation. Once the application is running, navigate to the Swagger endpoint (e.g., http://localhost:44351/swagger) to access the Swagger UI and explore the API endpoints.
 
 # Screenshots
 
