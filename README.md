@@ -2,7 +2,7 @@
 
 # Description 
 
-The University Management System is a comprehensive application built with C# ASP.NET Core Web API for the backend and Angular with Bootstrap for the frontend. The application is localized in Bosnian language. It utilizes a SQL database hosted on a server accessible via the internet. The system is designed to facilitate the management of university operations, catering to the needs of various user groups, including administrative staff, professors, and students. Additionally, an SMTP service is utilized for sending emails when adding new professors and students. Upon registration, an email containing their username and password is sent to their email address. Similarly, when generating a new password by administrative staff to these users, the new password is sent to their email.
+The University Management System is a comprehensive application built with C# ASP.NET Core Web API for the backend and Angular with Bootstrap for the frontend. The application is localized in Bosnian language. The system is designed to facilitate the management of university operations, catering to the needs of various user groups, including administrative staff, professors, and students. Additionally, an SMTP service is utilized for sending emails when adding new professors and students. Upon registration, an email containing their username and password is sent to their email address. Similarly, when generating a new password by administrative staff to these users, the new password is sent to their email.
 
 <h5>Key Features</h5>
 
@@ -98,7 +98,7 @@ The application will start on a local server and will be accessible at http://lo
 
 Testing API Endpoints: Utilize a tool like Postman or Swagger UI to test the API endpoints.
 
-Swagger Integration: Swagger has been integrated into the application to provide interactive API documentation. Once the application is running, navigate to the Swagger endpoint (e.g., http://localhost:5000/swagger) to access the Swagger UI and explore the API endpoints.
+Swagger Integration: Swagger has been integrated into the application to provide interactive API documentation. Once the application is running, navigate to the Swagger endpoint (e.g., http://localhost:44351/swagger) to access the Swagger UI and explore the API endpoints.
 
 # Screenshots
 
