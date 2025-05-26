@@ -10,15 +10,15 @@ namespace EStudentskaSluzba.Services
             try
             {
                 // Konfiguracija SMTP klijenta
-                var client = new SmtpClient("smtp.gmail.com");
+                var client = new SmtpClient("smtp.gmail.com"); // PO POTREBI ZAMIJENITI SMTP ADRESU, UKOLIKO NE KORISTITE GMAIL
 
                     client.Port = 587; // Postavite pravilnu SMTP portu
-                    client.Credentials = new NetworkCredential("adszarada55@gmail.com", "hjdq efbo ooda hygq");
+                    client.Credentials = new NetworkCredential("-- ZAMIJENITI ZA VAŠU EMAIL ADRESU --", "-- ZAMIJENITI ZA VAŠ EMAIL APP PASSWORD --");
                     client.EnableSsl = true;
                 
                     // Kreiranje emaila
                     var message = new MailMessage();
-                    message.From = new MailAddress("adszarada55@gmail.com");
+                    message.From = new MailAddress("-- ZAMIJENITI ZA VAŠU EMAIL ADRESU --");
                     message.To.Add(new MailAddress(toEmail));
                     message.Subject = subject;
                     message.Body = body;
