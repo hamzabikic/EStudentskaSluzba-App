@@ -1,4 +1,4 @@
-# EStudentskaSluzba Application
+# eStudentskaSluzba Application
 
 # Description 
 
@@ -56,7 +56,7 @@ Installation
 
 Clone this repository to your local machine using the following command:
 
-git clone https://github.com/hamzabikic/EStudentskaSluzba-App.git
+git clone https://github.com/hamzabikic/eStudentskaSluzba.git
 
 Navigate to the application directory in your terminal:
 
